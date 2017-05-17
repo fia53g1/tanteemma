@@ -1,3 +1,6 @@
+<?php
+  include 'header.php';
+>
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,11 +33,10 @@
     </header>
     <div id="maincontainer">
       <div id="produktliste">
-        <!--
         <?php
-          // für jedes produkt in db erstelle produkt dom
-          ?> 
-         -->
+          $products = $dbhandle->query("SELECT id FROM Artikel");
+          error_log(var_export($products, true));
+        ?> 
         <div class="produkt" id="produkt1">
           <p>Produkt1</p>
           <p><a class="atw">In den Warenkorb legen</a></p>
@@ -82,7 +84,6 @@
         value = valueArr.join(",");
         /* set cookie */
         document.cookie = cookiename + "=" + value + expires + ";path=/";
-
       }
       function getCookie(name) {
         var
