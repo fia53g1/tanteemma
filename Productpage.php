@@ -34,7 +34,7 @@
     <div id="maincontainer">
       <div id="produktliste">
         <?php
-          $products = $dbhandle->query("SELECT id FROM Artikel");
+          $products = $dbhandle->query("SELECT id FROM ARTIKEL");
           error_log(var_export($products, true));
         ?> 
         <div class="produkt" id="produkt1">
