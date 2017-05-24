@@ -26,13 +26,9 @@
         }
 
         public function renderShoppingCart() {
-            foreach ($this->products as $key => $value) {
-                $artikelInfo =  explode('#', $value);
-                $products = $dbhandle->query("SELECT * FROM ARTIKEL WHERE id=" $value[1]);
-                while ($product = $products->fetchArray(SQLITE3_ASSOC)) {
-                    echo "<ul><li>". $product["bezeichnung"] ." <button onclick='removeProduct(this)'>Löschen</button></li></ul>";
-                }
 
+            foreach ($this->products as $key => $value) {
+                echo "<ul><li>". $value ." <button onclick='removeProduct(this)'>Löschen</button></li></ul>";
             }
 
         }

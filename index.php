@@ -1,3 +1,5 @@
 <?php
-  include('Views/Produktseite.php');
+
+    include('Views/ProductPage.php');
+
 ?>
