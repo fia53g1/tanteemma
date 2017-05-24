@@ -35,27 +35,14 @@
       <div id="produktliste">
         <?php
           $products = $dbhandle->query("SELECT id FROM ARTIKEL");
-          error_log(var_export($products, true));
-          for ($prod in $products) {
-            echo <div class="produkt" id="$prod['id']">
-              echo <p>$prod['bezeichnung']</p>
-              echo <p>$prod['beschreibung']</p>
-              echo <p><a class="atw">In den Warenkorb legen</a></p>
-            echo </div>
+          while ($product = $products->fetchArray(SQLITE3_ASSOC)){
+                echo '<div class="produkt" data-id="' . $product["id"] . '">
+                    <p>' . $product["bezeichnung"] . '</p>
+                    <p>' . $product["beschreibung"] . '</p>
+                    <p><a class="atw">In den Warenkorb legen</a></p>
+                    </div>';
           }
         ?>
-        <div class="produkt" id="produkt1">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
-         <div class="produkt" id="produkt2">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
-        <div class="produkt" id="produkt3">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
       </div>
     </div>
     <script>
@@ -78,7 +65,7 @@
       function addToCookie(el) {
         var
           parentEL = el.parentElement.parentElement
-        , prdktID = parentEL.getAttribute("id")
+        , prdktID = parentEL.getAttribute("data-id")
         , valueArr = getCookie("warenkorb") ? getCookie("warenkorb").split(",") : []   
         , value = ""
         , datum = new Date()
