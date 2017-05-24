@@ -1,0 +1,10 @@
+// Platzieren Sie Ihre Einstellungen in dieser Datei, um Standard- und Benutzereinstellungen zu überschreiben.
+{
+    "php.validate.enable": true,
+    "php.validate.executablePath": "C:\\Users\\Marcel\\Downloads\\php-7.1.5-Win32-VC14-x64\\php.exe",
+    "php.executablePath": "C:\\Users\\Marcel\\Downloads\\php-7.1.5-Win32-VC14-x64\\php.exe",
+    "files.autoSave": "afterDelay",
+    "editor.minimap.enabled": true,
+    "editor.minimap.renderCharacters": false
+
+}
