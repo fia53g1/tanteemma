@@ -1,3 +1,6 @@
+<?php
+  include 'header.php';
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,28 +26,25 @@
         visibility:hidden;
         clear:both;
       }
+      .atw {
+        color:blue;
+      }
     </style>
   </head>
   <body>
-    <header>
-      <form action="Views/ShoppingCartPage.php">
-        <input type="submit" value="Zum Warenkorb">
-      </form>
-    </header>
     <div id="maincontainer">
-      <div id="produktliste">         
-        <div class="produkt" id="produkt1">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
-         <div class="produkt" id="produkt2">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
-        <div class="produkt" id="produkt3">
-          <p>Produkt1</p>
-          <p><a class="atw">In den Warenkorb legen</a></p>
-        </div>
+      <div id="produktliste">
+        <?php
+          $products = $dbhandle->query("SELECT * FROM ARTIKEL");
+          while ($product = $products->fetchArray(SQLITE3_ASSOC)){
+                echo '<div class="produkt" data-id="' . $product["bezeichnung"] . '#' . $product["id"] . '">
+                        <p>Bezeichnung: ' . $product["bezeichnung"] . '</p>
+                        <p>Preis: ' . $product["preis"] . '€</p>
+                        <p>Beschreibung: ' . $product["beschreibung"] . '</p>
+                        <p class="atw">In den Warenkorb legen</p>
+                      </div>';
+          }
+        ?>
       </div>
     </div>
     <script>
@@ -66,8 +66,8 @@
 
       function addToCookie(el) {
         var
-          parentEL = el.parentElement.parentElement
-        , prdktID = parentEL.getAttribute("id")
+          parentEL = el.parentElement
+        , prdktID = parentEL.getAttribute("data-id")
         , valueArr = getCookie("warenkorb") ? getCookie("warenkorb").split(",") : []   
         , value = ""
         , datum = new Date()
@@ -80,7 +80,6 @@
         value = valueArr.join(",");
         /* set cookie */
         document.cookie = cookiename + "=" + value + expires + ";path=/";
-
       }
       function getCookie(name) {
         var
