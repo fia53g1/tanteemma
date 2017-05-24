@@ -26,6 +26,9 @@
         visibility:hidden;
         clear:both;
       }
+      .atw {
+        color:blue;
+      }
     </style>
   </head>
   <body>
@@ -34,13 +37,14 @@
     <div id="maincontainer">
       <div id="produktliste">
         <?php
-          $products = $dbhandle->query("SELECT id FROM ARTIKEL");
+          $products = $dbhandle->query("SELECT * FROM ARTIKEL");
           while ($product = $products->fetchArray(SQLITE3_ASSOC)){
                 echo '<div class="produkt" data-id="' . $product["id"] . '">
-                    <p>' . $product["bezeichnung"] . '</p>
-                    <p>' . $product["beschreibung"] . '</p>
-                    <p><a class="atw">In den Warenkorb legen</a></p>
-                    </div>';
+                        <p>Bezeichnung: ' . $product["bezeichnung"] . '</p>
+                        <p>Preis: ' . $product["preis"] . '€</p>
+                        <p>Beschreibung: ' . $product["beschreibung"] . '</p>
+                        <p class="atw">In den Warenkorb legen</p>
+                      </div>';
           }
         ?>
       </div>
