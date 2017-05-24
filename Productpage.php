@@ -39,7 +39,7 @@
         <?php
           $products = $dbhandle->query("SELECT * FROM ARTIKEL");
           while ($product = $products->fetchArray(SQLITE3_ASSOC)){
-                echo '<div class="produkt" data-id="' . $product["id"] . '">
+                echo '<div class="produkt" data-id="' . $product["bezeichnung"] . '#' . $product["id"] . '">
                         <p>Bezeichnung: ' . $product["bezeichnung"] . '</p>
                         <p>Preis: ' . $product["preis"] . '€</p>
                         <p>Beschreibung: ' . $product["beschreibung"] . '</p>
