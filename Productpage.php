@@ -32,8 +32,6 @@
     </style>
   </head>
   <body>
-    <header>
-    </header>
     <div id="maincontainer">
       <div id="produktliste">
         <?php
