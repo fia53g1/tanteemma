@@ -68,7 +68,7 @@
 
       function addToCookie(el) {
         var
-          parentEL = el.parentElement.parentElement
+          parentEL = el.parentElement
         , prdktID = parentEL.getAttribute("data-id")
         , valueArr = getCookie("warenkorb") ? getCookie("warenkorb").split(",") : []   
         , value = ""
