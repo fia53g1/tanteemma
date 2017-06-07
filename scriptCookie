@@ -1,0 +1,23 @@
+<script>
+  (function() {
+    wkNumber();
+  })();
+  function wkNumber() {
+    var
+      valueArr = getCookie("warenkorb") ? getCookie("warenkorb").split(",") : []
+    , count = 0
+    ;
+    valueArr.forEach(function(produkt) {
+      count += parseInt(produkt.split("#")[2], 10);
+    });
+    document.getElementById("count").innerHTML = count;
+  }
+
+  function getCookie(name) {
+    var
+      re = new RegExp(name + "=([^;]+)")
+    , value = re.exec(document.cookie)
+    ;
+    return (value != null) ? unescape(value[1]) : null;
+  }
+</script>
